@@ -1,6 +1,6 @@
 ---
 function:
-  name: Extract concur raw formatted reports from ses mail -${self:provider.stage}
+  name: Extract concur reports from ses mail-${self:provider.stage}
   description: Extracting attachments from S3 Bucket-${self:provider.stage}
   handler: src/omniFinanceExtractMail.handler
   memorySize: 1024
@@ -16,7 +16,7 @@ function:
         bucket: omni-finance-receive-${self:provider.stage}
         event: s3:ObjectCreated:*
         existing: true
-  environment:
+  # environment:
     # S3_BUCKET_FOLDER_OPEN_INVOICE_RM: ${ssm:/${self:service}/${self:provider.stage}/s3.attachmentExtractOpenInvoiceRm}
     # S3_BUCKET_FOLDER_AP_TRANSCTIONS: ${ssm:/${self:service}/${self:provider.stage}/s3.attachmentExtractApTransctions}
     # S3_BUCKET_FOLDER_VENDOR_TYPE: ${ssm:/${self:service}/${self:provider.stage}/s3.attachentExtractVendorType}
