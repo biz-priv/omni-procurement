@@ -50,7 +50,7 @@ layers:
     retain: false
 
 functions:
-  Omni-Finance-Extract-Reports: ${file(config/functions/omniFinanceExtractMail.yml):function}
+  source-reports: ${file(config/functions/omniFinanceExtractMail.yml):function}
 
 
 
