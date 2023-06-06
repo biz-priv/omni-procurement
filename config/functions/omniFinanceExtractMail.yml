@@ -16,8 +16,8 @@ function:
         bucket: omni-finance-receive-${self:provider.stage}
         event: s3:ObjectCreated:*
         existing: true
-  # environment:
-    # S3_BUCKET_FOLDER_OPEN_INVOICE_RM: ${ssm:/${self:service}/${self:provider.stage}/s3.attachmentExtractOpenInvoiceRm}
-    # S3_BUCKET_FOLDER_AP_TRANSCTIONS: ${ssm:/${self:service}/${self:provider.stage}/s3.attachmentExtractApTransctions}
-    # S3_BUCKET_FOLDER_VENDOR_TYPE: ${ssm:/${self:service}/${self:provider.stage}/s3.attachentExtractVendorType}
-    # S3_BUCKET_FOLDER_CRITICAL_SUPPLIERS: ${ssm:/${self:service}/${self:provider.stage}/s3.attachmentExtractCriticalSuppliers}
+  environment:
+    S3_BUCKET_FOLDER_OPEN_INVOICE_RM: ${ssm:/${self:service}/${self:provider.stage}/s3.attachmentExtractOpenInvoiceRm}
+    S3_BUCKET_FOLDER_AP_TRANSCTIONS: ${ssm:/${self:service}/${self:provider.stage}/s3.attachmentExtractApTransctions}
+    S3_BUCKET_FOLDER_VENDOR_TYPE: ${ssm:/${self:service}/${self:provider.stage}/s3.attachentExtractVendorType}
+    S3_BUCKET_FOLDER_CRITICAL_SUPPLIERS: ${ssm:/${self:service}/${self:provider.stage}/s3.attachmentExtractCriticalSuppliers}
