@@ -15,7 +15,6 @@ function:
     - s3:
         bucket: omni-finance-receive-${self:provider.stage}
         event: s3:ObjectCreated:*
-        existing: true
   environment:
     S3_BUCKET_FOLDER_OPEN_INVOICE_RM: ${ssm:/${self:service}/${self:provider.stage}/s3.attachmentExtractOpenInvoiceRm}
     S3_BUCKET_FOLDER_AP_TRANSCTIONS: ${ssm:/${self:service}/${self:provider.stage}/s3.attachmentExtractApTransctions}
