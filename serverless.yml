@@ -20,8 +20,7 @@ provider:
             - "arn:aws:s3:::omni-finance-receive-${self:provider.stage}"
             - "arn:aws:s3:::omni-finance-receive-${self:provider.stage}/*"
             - "arn:aws:s3:::omni-finance-attachment-extract-${self:provider.stage}"
-            - "arn:aws:s3:::omni-finance-attachment-extract-${self:provider.stage}/*"
-  runtime: nodejs14.x     
+            - "arn:aws:s3:::omni-finance-attachment-extract-${self:provider.stage}/*"    
   deploymentBucket: 
     name: ${ssm:/omni-dw/${self:provider.stage}/sls/deployment/bucket}
     serverSideEncryption: AES256

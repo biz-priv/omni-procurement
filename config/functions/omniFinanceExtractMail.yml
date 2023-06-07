@@ -5,6 +5,7 @@ function:
   handler: src/omniFinanceExtractMail.handler
   memorySize: 1024
   timeout: 90
+  runtime: nodejs14.x 
   layers:
     - { Ref: OmniProcurementLayerLambdaLayer }
   package:
