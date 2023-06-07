@@ -1,4 +1,4 @@
-const AWS = require("aws-sdk");
+const AWS = require("@aws-sdk/client-s3");
 const s3 = new AWS.S3();
 const simpleParser = require("mailparser").simpleParser;
 const moment = require('moment');
