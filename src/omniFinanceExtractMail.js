@@ -65,7 +65,7 @@ async function uploadFileToS3(outputFilename, fileContent) {
     const filename = outputFilename.slice(0, -4) + "_" + moment().format('YYYY-MM-DD_HH:mm:ss') + outputFilename.slice(-4)
     console.log(filename)
     try {
-        if (outputFilename.includes("Concur_open_invoices_rm")) {
+        if (outputFilename.includes("Concur Open Invoices-RM")) {
             await s3
                 .upload({
                     Bucket: process.env.S3_BUCKET_FOLDER_OPEN_INVOICE_RM,
@@ -74,7 +74,7 @@ async function uploadFileToS3(outputFilename, fileContent) {
                     ContentType: "application/octet-stream",
                 })
                 .promise();
-        } else if (outputFilename.includes("Netsuite_ap_transactions")) {
+        } else if (outputFilename.includes("APTransactionswithpostingstatusResults")) {
             await s3
                 .upload({
                     Bucket: process.env.S3_BUCKET_FOLDER_AP_TRANSCTIONS,
@@ -83,7 +83,7 @@ async function uploadFileToS3(outputFilename, fileContent) {
                     ContentType: "application/octet-stream",
                 })
                 .promise();
-        } else if (outputFilename.includes("Netsuite_vendor_type")) {
+        } else if (outputFilename.includes("Vendor Types")) {
             await s3
                 .upload({
                     Bucket: process.env.S3_BUCKET_FOLDER_VENDOR_TYPE,
@@ -92,7 +92,7 @@ async function uploadFileToS3(outputFilename, fileContent) {
                     ContentType: "application/vnd.ms-excel",
                 })
                 .promise();
-        } else if (outputFilename.includes("Concur_critical_suppliers")) {
+        } else if (outputFilename.includes("Critical Supplier")) {
             await s3
                 .upload({
                     Bucket: process.env.S3_BUCKET_FOLDER_CRITICAL_SUPPLIERS,
