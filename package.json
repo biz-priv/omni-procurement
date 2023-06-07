@@ -9,12 +9,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.1298.0",
-    "mailparser": "^3.6.3",
+    "aws-sdk": "^2.1392.0",
+    "mailparser": "^3.6.4",
     "moment": "^2.29.4"
   },
   "devDependencies": {
-    "serverless": "^2.72.3",
-    "serverless-offline": "^3.20.2"
+    "serverless-offline": "^3.20.2",
+    "serverless": "^2.72.3"
   }
 }

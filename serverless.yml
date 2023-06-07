@@ -21,7 +21,7 @@ provider:
             - "arn:aws:s3:::omni-finance-receive-${self:provider.stage}/*"
             - "arn:aws:s3:::omni-finance-attachment-extract-${self:provider.stage}"
             - "arn:aws:s3:::omni-finance-attachment-extract-${self:provider.stage}/*"
-  runtime: nodejs18.x     
+  runtime: nodejs14.x     
   deploymentBucket: 
     name: ${ssm:/omni-dw/${self:provider.stage}/sls/deployment/bucket}
     serverSideEncryption: AES256
@@ -46,7 +46,7 @@ layers:
     name: ${self:service}-layer-${self:provider.stage}
     description: Omni procurement lambda layer for all node modules - ${self:provider.stage}
     compatibleRuntimes:
-      - nodejs18.x
+      - nodejs14.x
     retain: false
 
 functions:

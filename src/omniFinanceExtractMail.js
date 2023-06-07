@@ -9,7 +9,7 @@ module.exports.handler = async (event) => {
     try {
         // console.info(event.Records[0].s3.object.key);
         const bucket = "omni-finance-receive-dev";
-        const key = "dq5a2bbkjf39nbhovforu6sjeub248ihh4c8ld01";
+        const key = "fr5jp43pjruceealk33dsir6itrc5m8hg2i3c201";
         // const bucket = event.Records[0].s3.bucket.name;
         // const key = event.Records[0].s3.object.key;
         const s3Data = await getS3Data(bucket, key);
