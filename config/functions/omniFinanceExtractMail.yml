@@ -13,7 +13,7 @@ function:
      - 'src/omniFinanceExtractMail.js'  
   events:
     - s3:
-        bucket:  omni-finance-receive-${self:provider.stage}
+        bucket:  omni-finance-receive-dev
         event: s3:ObjectCreated:*
         existing: true
   environment:
