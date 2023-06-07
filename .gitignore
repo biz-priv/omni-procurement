@@ -5,6 +5,7 @@ Events
 doc
 lambdaLayer/lib/nodejs/yarn.lock
 lambdaLayer/lib/nodejs/package-lock.json
+lambdaLayer/lib/nodejs/node_modules/
 .DS_Store
 doc.txt
 test.js
