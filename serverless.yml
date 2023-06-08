@@ -50,6 +50,7 @@ layers:
 
 functions:
   extract-reports: ${file(config/functions/omniFinanceExtractMail.yml):function}
+  tigger-gluejob: ${file(config/functions/triggerGlueJob.yml):function}
 
 
 
