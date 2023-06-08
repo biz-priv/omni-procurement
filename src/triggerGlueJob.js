@@ -3,6 +3,7 @@ const glue = new AWS.Glue();
 
 module.exports.handler = async (event, context) => {
     try {
+        console.log("event",event)
         const jobName = 'sample';
         const startJobResponse = await glue.startJobRun({ JobName: jobName }).promise();
         console.log('Glue job started successfully:', startJobResponse.JobRunId);
