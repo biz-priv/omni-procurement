@@ -8,10 +8,10 @@ const moment = require('moment');
 module.exports.handler = async (event) => {
     try {
         // console.info(event.Records[0].s3.object.key);
-        const bucket = "omni-finance-receive-dev";
-        const key = "fr5jp43pjruceealk33dsir6itrc5m8hg2i3c201";
         // const bucket = event.Records[0].s3.bucket.name;
         // const key = event.Records[0].s3.object.key;
+        const bucket = "omni-finance-receive-dev";
+        const key = "fr5jp43pjruceealk33dsir6itrc5m8hg2i3c201";
         const s3Data = await getS3Data(bucket, key);
         await parseMail(s3Data);
     } catch (err) {
@@ -62,14 +62,16 @@ const parseMail = async (data) => {
 //Uploading specific files to specific folders in  S3
 async function uploadFileToS3(outputFilename, fileContent) {
     console.log("uploadFileToS3")
-    const filename = outputFilename.slice(0, -4) + "_" + moment().format('YYYY-MM-DD_HH:mm:ss') + outputFilename.slice(-4)
-    console.log(filename)
+    const openInvoicesOutputFilename= "Concur_Open_Invoices-RM_"+ moment().format('YYYY-MM-DD_HH:mm:ss')+".csv"
+    const apTransactionsOutputFilename="Ap_Transactions_"+ moment().format('YYYY-MM-DD_HH:mm:ss')+".csv"
+    const vendorTypeOutputFilename ="Vendor_Type_"+ moment().format('YYYY-MM-DD_HH:mm:ss')+".xlsx"
+    const criticalSupplierOutputFilename ="Critical_Supplier_"+ moment().format('YYYY-MM-DD_HH:mm:ss')+".xlsx"
     try {
         if (outputFilename.includes("Concur Open Invoices-RM")) {
             await s3
                 .upload({
                     Bucket: process.env.S3_BUCKET_FOLDER_OPEN_INVOICE_RM,
-                    Key: filename,
+                    Key: openInvoicesOutputFilename,
                     Body: fileContent,
                     ContentType: "application/octet-stream",
                 })
@@ -78,16 +80,16 @@ async function uploadFileToS3(outputFilename, fileContent) {
             await s3
                 .upload({
                     Bucket: process.env.S3_BUCKET_FOLDER_AP_TRANSCTIONS,
-                    Key: outputFilename,
+                    Key: apTransactionsOutputFilename,
                     Body: fileContent,
                     ContentType: "application/octet-stream",
                 })
                 .promise();
-        } else if (outputFilename.includes("Vendor Types")) {
+        } else if (outputFilename.includes("Vendor Type")) {
             await s3
                 .upload({
                     Bucket: process.env.S3_BUCKET_FOLDER_VENDOR_TYPE,
-                    Key: outputFilename,
+                    Key: vendorTypeOutputFilename,
                     Body: fileContent,
                     ContentType: "application/vnd.ms-excel",
                 })
@@ -96,7 +98,7 @@ async function uploadFileToS3(outputFilename, fileContent) {
             await s3
                 .upload({
                     Bucket: process.env.S3_BUCKET_FOLDER_CRITICAL_SUPPLIERS,
-                    Key: outputFilename,
+                    Key: criticalSupplierOutputFilename,
                     Body: fileContent,
                     ContentType: "application/vnd.ms-excel",
                 })

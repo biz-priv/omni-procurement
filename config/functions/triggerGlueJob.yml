@@ -21,7 +21,4 @@ function:
   #       existing: true
   #       forceDeploy: true
   # environment:
-  #   S3_BUCKET_FOLDER_OPEN_INVOICE_RM: ${ssm:/${self:service}/${self:provider.stage}/s3.attachmentExtractOpenInvoiceRm}
-  #   S3_BUCKET_FOLDER_AP_TRANSCTIONS: ${ssm:/${self:service}/${self:provider.stage}/s3.attachmentExtractApTransctions}
-  #   S3_BUCKET_FOLDER_VENDOR_TYPE: ${ssm:/${self:service}/${self:provider.stage}/s3.attachentExtractVendorType}
-  #   S3_BUCKET_FOLDER_CRITICAL_SUPPLIERS: ${ssm:/${self:service}/${self:provider.stage}/s3.attachmentExtractCriticalSuppliers}
+  #   GLUE_JOB_NAME: ${ssm:/${self:service}/${self:provider.stage}/glueJob_name}
