@@ -1,6 +1,6 @@
 ---
 function:
-  name: ${self:service}-extract-reports-${self:provider.stage}
+  name: ${self:service}-trigger-gluejob-${self:provider.stage}
   description: Extracting attachments from S3 Bucket-${self:provider.stage}
   handler: src/triggerGlueJob.handler
   memorySize: 1024
