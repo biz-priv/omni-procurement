@@ -7,11 +7,11 @@ const moment = require('moment');
 
 module.exports.handler = async (event) => {
     try {
-        // console.info(event.Records[0].s3.object.key);
-        // const bucket = event.Records[0].s3.bucket.name;
-        // const key = event.Records[0].s3.object.key;
-        const bucket = "omni-finance-receive-dev";
-        const key = "fr5jp43pjruceealk33dsir6itrc5m8hg2i3c201";
+        console.info(event.Records[0].s3.object.key);
+        const bucket = event.Records[0].s3.bucket.name;
+        const key = event.Records[0].s3.object.key;
+        // const bucket = "omni-finance-receive-dev";
+        // const key = "fr5jp43pjruceealk33dsir6itrc5m8hg2i3c201";
         const s3Data = await getS3Data(bucket, key);
         await parseMail(s3Data);
     } catch (err) {

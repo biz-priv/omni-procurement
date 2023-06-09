@@ -20,5 +20,10 @@ function:
   #           - prefix: Concur_open_invoices_rm/
   #       existing: true
   #       forceDeploy: true
-  # environment:
-  #   GLUE_JOB_NAME: ${ssm:/${self:service}/${self:provider.stage}/glueJob_name}
+  environment:
+    OPEN_INVOICES_GLUEJOB_NAME: ${ssm:/${self:service}/${self:provider.stage}/glueJob_openInvoicesName}
+    AP_TRANSACTION_GLUEJOB_NAME: ${ssm:/${self:service}/${self:provider.stage}/glueJob_apTransactionsName}
+    VENDOR_TYPE_GLUEJOB_NAME: ${ssm:/${self:service}/${self:provider.stage}/glueJob_vendorTypeName}
+    CRITICAL_SUPPLIER_GLUEJOB_NAME: ${ssm:/${self:service}/${self:provider.stage}/glueJob_criticalSupplierName}
+    ARCHIVE_FOLDER_NAME: ${ssm:/${self:service}/${self:provider.stage}/archiveFolderName}
+
