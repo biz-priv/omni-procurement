@@ -62,7 +62,7 @@ const parseMail = async (data) => {
 //Uploading specific files to specific folders in  S3
 async function uploadFileToS3(outputFilename, fileContent) {
     console.log("uploadFileToS3")
-    const openInvoicesOutputFilename= "Concur_Open_Invoices-RM_"+ moment().format('YYYY-MM-DD_HH:mm:ss')+".csv"
+    const openInvoicesOutputFilename= "Concur_Open_Invoices_RM_"+ moment().format('YYYY-MM-DD_HH:mm:ss')+".csv"
     const apTransactionsOutputFilename="Ap_Transactions_"+ moment().format('YYYY-MM-DD_HH:mm:ss')+".csv"
     const vendorTypeOutputFilename ="Vendor_Type_"+ moment().format('YYYY-MM-DD_HH:mm:ss')+".xlsx"
     const criticalSupplierOutputFilename ="Critical_Supplier_"+ moment().format('YYYY-MM-DD_HH:mm:ss')+".xlsx"
