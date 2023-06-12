@@ -12,14 +12,17 @@ function:
     patterns:
      - '!**/*'
      - 'src/triggerGlueJob.js'  
-  # events:
-  #     - s3:
-  #         bucket: omni-finance-attachment-extract-${self:provider.stage}
-  #         event: s3:ObjectCreated:Put
-  #         rules:
-  #           - prefix: Concur_open_invoices_rm/
-  #       existing: true
-  #       forceDeploy: true
+  events:
+      - s3:
+          bucket: omni-finance-attachment-extract-${self:provider.stage}
+          event: s3:ObjectCreated:Put
+          rules:
+            - prefix: Concur_open_invoices_rm/
+            - prefix: Concur_critical_suppliers/
+            - prefix: Netsuite_ap_transactions/
+            - prefix: Netsuite_vendor_type/
+        existing: true
+        forceDeploy: true
   environment:
     OPEN_INVOICES_GLUEJOB_NAME: ${ssm:/${self:service}/${self:provider.stage}/glueJob_openInvoicesName}
     AP_TRANSACTION_GLUEJOB_NAME: ${ssm:/${self:service}/${self:provider.stage}/glueJob_apTransactionsName}

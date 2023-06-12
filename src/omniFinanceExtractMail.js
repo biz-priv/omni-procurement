@@ -91,7 +91,7 @@ async function uploadFileToS3(outputFilename, fileContent) {
                     Bucket: process.env.S3_BUCKET_FOLDER_VENDOR_TYPE,
                     Key: vendorTypeOutputFilename,
                     Body: fileContent,
-                    ContentType: "application/vnd.ms-excel",
+                    ContentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                 })
                 .promise();
         } else if (outputFilename.includes("Critical Supplier")) {
@@ -100,7 +100,7 @@ async function uploadFileToS3(outputFilename, fileContent) {
                     Bucket: process.env.S3_BUCKET_FOLDER_CRITICAL_SUPPLIERS,
                     Key: criticalSupplierOutputFilename,
                     Body: fileContent,
-                    ContentType: "application/vnd.ms-excel",
+                    ContentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                 })
                 .promise();
         }
