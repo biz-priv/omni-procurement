@@ -22,7 +22,7 @@ function:
             - prefix: Netsuite_ap_transactions/
             - prefix: Netsuite_vendor_type/
             - prefix: concur_Invoice_Status_Volume/
-        existing: true
+          existing: true
   environment:
     OPEN_INVOICES_GLUEJOB_NAME: ${ssm:/${self:service}/${self:provider.stage}/glueJob_openInvoicesName}
     AP_TRANSACTION_GLUEJOB_NAME: ${ssm:/${self:service}/${self:provider.stage}/glueJob_apTransactionsName}
