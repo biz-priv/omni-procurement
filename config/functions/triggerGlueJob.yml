@@ -5,7 +5,7 @@ function:
   handler: src/triggerGlueJob.handler
   memorySize: 1024
   timeout: 90
-  runtime: nodejs14.x 
+  runtime: nodejs18.x 
   layers:
     - { Ref: OmniProcurementLayerLambdaLayer }
   package:
@@ -21,12 +21,13 @@ function:
             - prefix: Concur_critical_suppliers/
             - prefix: Netsuite_ap_transactions/
             - prefix: Netsuite_vendor_type/
+            - prefix: concur_Invoice_Status_Volume/
         existing: true
-        forceDeploy: true
   environment:
     OPEN_INVOICES_GLUEJOB_NAME: ${ssm:/${self:service}/${self:provider.stage}/glueJob_openInvoicesName}
     AP_TRANSACTION_GLUEJOB_NAME: ${ssm:/${self:service}/${self:provider.stage}/glueJob_apTransactionsName}
     VENDOR_TYPE_GLUEJOB_NAME: ${ssm:/${self:service}/${self:provider.stage}/glueJob_vendorTypeName}
     CRITICAL_SUPPLIER_GLUEJOB_NAME: ${ssm:/${self:service}/${self:provider.stage}/glueJob_criticalSupplierName}
+    INVOICE_STATUS_VOLUME_GLUEJOB_NAME: ${ssm:/${self:service}/${self:provider.stage}/glueJob_invoiceStatusAndVolume}
     ARCHIVE_FOLDER_NAME: ${ssm:/${self:service}/${self:provider.stage}/archiveFolderName}
 

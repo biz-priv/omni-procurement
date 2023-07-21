@@ -5,7 +5,7 @@ function:
   handler: src/omniFinanceExtractMail.handler
   memorySize: 1024
   timeout: 90
-  runtime: nodejs14.x 
+  runtime: nodejs18.x 
   layers:
     - { Ref: OmniProcurementLayerLambdaLayer }
   package:
@@ -17,9 +17,9 @@ function:
         bucket:  omni-finance-receive-${self:provider.stage}
         event: s3:ObjectCreated:Put
         existing: true
-        forceDeploy: true
   environment:
     S3_BUCKET_FOLDER_OPEN_INVOICE_RM: ${ssm:/${self:service}/${self:provider.stage}/s3.attachmentExtractOpenInvoiceRm}
     S3_BUCKET_FOLDER_AP_TRANSCTIONS: ${ssm:/${self:service}/${self:provider.stage}/s3.attachmentExtractApTransctions}
     S3_BUCKET_FOLDER_VENDOR_TYPE: ${ssm:/${self:service}/${self:provider.stage}/s3.attachentExtractVendorType}
     S3_BUCKET_FOLDER_CRITICAL_SUPPLIERS: ${ssm:/${self:service}/${self:provider.stage}/s3.attachmentExtractCriticalSuppliers}
+    S3_BUCKET_FOLDER_INVOICE_STATUS_VOLUME: ${ssm:/${self:service}/${self:provider.stage}/s3.attachmentExtractInvoiceStatusAndVolume}

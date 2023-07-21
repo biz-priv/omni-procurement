@@ -66,6 +66,7 @@ async function uploadFileToS3(outputFilename, fileContent) {
     const apTransactionsOutputFilename="Ap_Transactions_"+ moment().format('YYYY-MM-DD_HH:mm:ss')+".csv"
     const vendorTypeOutputFilename ="Vendor_Type_"+ moment().format('YYYY-MM-DD_HH:mm:ss')+".xlsx"
     const criticalSupplierOutputFilename ="Critical_Supplier_"+ moment().format('YYYY-MM-DD_HH:mm:ss')+".xlsx"
+    const invoiceStatusAndVolumeOutputFilename= "invoice_Status_Volume"+ moment().format('YYYY-MM-DD_HH:mm:ss')+".xlsx"
     try {
         if (outputFilename.includes("Concur Open Invoices-RM")) {
             await s3
@@ -99,6 +100,15 @@ async function uploadFileToS3(outputFilename, fileContent) {
                 .upload({
                     Bucket: process.env.S3_BUCKET_FOLDER_CRITICAL_SUPPLIERS,
                     Key: criticalSupplierOutputFilename,
+                    Body: fileContent,
+                    ContentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                })
+                .promise();
+        } else if (outputFilename.includes("Concur Invoice Status & Volume")) {
+            await s3
+                .upload({
+                    Bucket: process.env.S3_BUCKET_FOLDER_INVOICE_STATUS_VOLUME,
+                    Key: invoiceStatusAndVolumeOutputFilename,
                     Body: fileContent,
                     ContentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                 })

@@ -50,6 +50,16 @@ module.exports.handler = async (event, context) => {
                 },
             }).promise();
             console.log('Crititcal Supplier Glue job started successfully:', startCrititcalSupplierJobResponse.JobRunId);
+        } else if (fileName.includes("invoice_Status_Volume")) {
+            const startinvoiceStatusAndVolumeJobResponse = await glue.startJobRun({
+                JobName: process.env.INVOICE_STATUS_VOLUME_GLUEJOB_NAME,
+                Arguments: {
+                    '--BUCKET_NAME': bucketName,
+                    '--PREFIX_PATH': prefixPath,
+                    '--DEST_FOLDER_NAME': process.env.ARCHIVE_FOLDER_NAME,
+                },
+            }).promise();
+            console.log('Concur Invoice Status and Volume Glue job started successfully:', startinvoiceStatusAndVolumeJobResponse.JobRunId);
         }
         else {
             return 'Glue job Not triggered successfully';
