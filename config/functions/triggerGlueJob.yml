@@ -17,10 +17,30 @@ function:
           bucket: omni-finance-attachment-extract-${self:provider.stage}
           event: s3:ObjectCreated:Put
           rules:
-            # - prefix: Concur_open_invoices_rm/
-            # - prefix: Concur_critical_suppliers/
-            # - prefix: Netsuite_ap_transactions/
-            # - prefix: Netsuite_vendor_type/
+            - prefix: Concur_open_invoices_rm/
+          existing: true
+      - s3:
+          bucket: omni-finance-attachment-extract-${self:provider.stage}
+          event: s3:ObjectCreated:Put
+          rules:
+            - prefix: Concur_critical_suppliers/
+          existing: true
+      - s3:
+          bucket: omni-finance-attachment-extract-${self:provider.stage}
+          event: s3:ObjectCreated:Put
+          rules:
+            - prefix: Netsuite_ap_transactions/
+          existing: true
+      - s3:
+          bucket: omni-finance-attachment-extract-${self:provider.stage}
+          event: s3:ObjectCreated:Put
+          rules:
+            - prefix: Netsuite_vendor_type/
+          existing: true
+      - s3:
+          bucket: omni-finance-attachment-extract-${self:provider.stage}
+          event: s3:ObjectCreated:Put
+          rules:
             - prefix: concur_Invoice_Status_Volume/
           existing: true
   environment:
